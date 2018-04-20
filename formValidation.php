@@ -1,8 +1,5 @@
-<?php
-	
+<?php	
 	if(isset($_POST['action']) && $_POST['action'] == 'application'){
-		
-
 		$name = $_POST['fname'];
 		$nationality = $_POST['nationality'];
 		$cname = $_POST['cname'];
@@ -18,28 +15,22 @@
 		$hSize = $_POST['hSize'];
 		$gender = $_POST['gender'];
 		$pet = $_POST['pet'];
-
 		$staffArray = array();
 		foreach($staffs as $staff){
 			$staffArray[] = $staff;
 		};
-
 		if(!empty($name) && !empty($nationality) && !empty($email) && !empty($phone) && !empty($type) && !empty($fmember) && !empty($dOff) && !empty($address) && !empty($staffArray) && !empty($salary) && !empty($english) && !empty($hSize) && !empty($gender) && !empty($pet)){
-
-			
 				for($i = 0; $i < 2; $i++){
 					if($i == 0){
 						$to = $email;
 					}else{
-						$to = 'info@domesticforyou.com';
+						//$to = 'info@domesticforyou.com';\
+						$to = 'rickysingh.random@gmail.com';
 					};
-
-					// send the email
 					$subject = 'Application Form '. $type;
 					$headers = "From: support@domesticforyou.com\r\n" ;
 					$headers .= "MIME-Version: 1.0\r\n";
 					$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
 					$message = "<html></body>";
 					$message .= "<head><style>";
 					$message .= "html{font-family:verdana;}";
@@ -73,7 +64,6 @@
 					$message .= "<tr><td>Type:</td><td>".$type."</td></tr>";
 					$message .= "<tr><td>Submitted on:</td><td>".date('Y-m-d')."</td></tr>";
 					$message .= "</table>";
-					
 					$message .= "<h2>Terms & Condition</h2>";
 					$message .= "<ul>";
 					if($type == 'Live In'){
@@ -140,31 +130,18 @@
 					$message .= "<br>";
 					$message .= "<p>I ".$name." agree to terms and conditions</p>";
 					$message .= "<br>";
-					
 					$message .= "<p>Our Customer Care team will contact within 24 Hours after reviewing the application form filled by you.</p>";
 					$message .= "<p>You can reach to us on info@domesticforyou.com or may contact us on +91-8800590666.</p>";
 					$message .= "<p>Regards</p>";
 					$message .= "<p>Domestic For You Pvt Ltd</p>";
 					$message .= "</body></html>";
-
 					mail($to, $subject, $message, $headers);	
-				}
-
+				};
 				echo 'success';
-			
-
 		}else{
 			echo 'There was an error, Please try again.';
-		}
-
-
-
-
-
-
+		};
 	}else{
 		die('No Milk & Cookie for you.');
-	}
-
-
+	};
 ?>

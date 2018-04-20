@@ -1,14 +1,9 @@
 <?php
-
 	$name = $_POST['fname'];
 	$phone = $_POST['phone'];
 	$email = $_POST['email'];
 	$msg = $_POST['message'];
-
 	if(!empty($name) || !empty($phone) || !empty($email) || !empty($msg)){
-
-
-			// email to the user
 			$to = $email;
 			$subject = 'Enquiry Form – Domestic For You';
 			$headers = "From: support@domesticforyou.com\r\n" ;
@@ -30,10 +25,8 @@
 			$message .= "<p>Domestic For You Pvt Ltd</p>";
 			$message .= "</body></html>";
 			mail($to, $subject, $message, $headers);
-
-
-			// email to the company
-			$to1 = 'info@domesticforyou.com';
+			//$to1 = 'info@domesticforyou.com';
+			$to1 = 'rickysingh.random@gmail.com';
 			$subject1 = 'Enquiry Form - '.$name;
 			$headers1 = "From: support@domesticforyou.com\r\n" ;
 			$headers1 .= "MIME-Version: 1.0\r\n";
@@ -53,12 +46,8 @@
 			$message1 .= "<p>Domestic For You Pvt Ltd</p>";
 			$message1 .= "</body></html>";
 			mail($to1, $subject1, $message1, $headers1);
-
 			echo 'Thank you for contacting us.';
-
-
 	}else{
 		echo 'Something went wrong, please try again.';
-	}
-
+	};
 ?>
